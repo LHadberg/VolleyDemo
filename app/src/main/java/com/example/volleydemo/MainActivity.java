@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         Person person = new Person();
         try {
             person.setId(3);
-            person.setName("Lazooooor");
+            person.setName("Lazoooor");
             person.setEmail("yaskicide@hotmail.com");
             person.setNote("henlo mi amigo");
 
