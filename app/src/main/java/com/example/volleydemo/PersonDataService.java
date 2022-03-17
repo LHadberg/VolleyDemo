@@ -1,24 +1,17 @@
 package com.example.volleydemo;
 
 import android.content.Context;
-import android.provider.ContactsContract;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class PersonDataService {
     public static final String PERSON_API = "http://10.0.2.2:8080/demo1/api/person";
@@ -29,11 +22,9 @@ public class PersonDataService {
     }
 
     public void getAllPersons(DataServiceListener serviceListener) {
-        String url = PERSON_API;
-
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
-                url,
+                PERSON_API,
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -77,7 +68,7 @@ public class PersonDataService {
         VolleySingleton.getInstance(ctx).addToRequestQueue(jsonObjectRequest);
     }
 
-    public int postPerson(JSONObject person, DataServiceListener dataServiceListener) {
+    public void postPerson(JSONObject person, DataServiceListener dataServiceListener) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 PERSON_API,
@@ -97,7 +88,6 @@ public class PersonDataService {
         );
         // Add the request to the RequestQueue.
         VolleySingleton.getInstance(ctx).addToRequestQueue(jsonObjectRequest);
-        return 1;
     }
 
     public void deletePersonById(int personId, DataServiceListener serviceListener) {
@@ -124,11 +114,7 @@ public class PersonDataService {
         VolleySingleton.getInstance(ctx).addToRequestQueue(jsonObjectRequest);
     }
 
-
-
     public void putPersonById(Person person, DataServiceListener serviceListener) {
-        String url = PERSON_API;
-
         Gson gson = new Gson();
         String jsonString = gson.toJson(person, Person.class);
         JSONObject json = new JSONObject();
@@ -140,7 +126,7 @@ public class PersonDataService {
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.PUT,
-                url,
+                PERSON_API,
                 json,
                 new Response.Listener<JSONObject>() {
                     @Override
