@@ -1,4 +1,4 @@
-package com.example.volleydemo;
+package com.example.volleydemo.dataservice;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

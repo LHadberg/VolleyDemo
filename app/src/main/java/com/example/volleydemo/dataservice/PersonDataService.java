@@ -1,4 +1,4 @@
-package com.example.volleydemo;
+package com.example.volleydemo.dataservice;
 
 import android.content.Context;
 
@@ -7,6 +7,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.volleydemo.datasource.VolleySingleton;
+import com.example.volleydemo.models.Person;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -21,7 +23,7 @@ public class PersonDataService {
         this.ctx = ctx;
     }
 
-    public void getAllPersons(DataServiceListener serviceListener) {
+    public void getAllPersonsAsObjects(DataServiceListener serviceListener) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 PERSON_API,

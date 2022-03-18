@@ -1,4 +1,4 @@
-package com.example.volleydemo;
+package com.example.volleydemo.models;
 
 import com.google.gson.Gson;
 
